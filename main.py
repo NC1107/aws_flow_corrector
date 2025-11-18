@@ -128,7 +128,7 @@ def build_arn_to_variable_map(arn_list, verbose=False):
             var_name = resource_id.replace('-', '_')
         
         # Create dynamic reference
-        dynamic_ref = f"${{{resource_type.replace('-', '_')}.{var_name}}}"
+        dynamic_ref = f"${{{resource_type.replace('-', '_')}_{var_name}}}"
         arn_map[arn] = dynamic_ref
         
         if verbose:

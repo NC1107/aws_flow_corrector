@@ -26,9 +26,9 @@ Converts ARNs like:
 arn:aws:lambda:us-east-1:123456789:function:state-lookup
 ```
 
-To dynamic references:
+To Terraform template variables:
 ```
-${function.state_lookup}
+${function_state_lookup}
 ```
 
 ## Options
