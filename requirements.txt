@@ -1,2 +1,1 @@
-# Core dependencies
-# Add dependencies as needed
+# No external dependencies required - uses Python standard library only

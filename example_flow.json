@@ -1,0 +1,36 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "12345678-1234-1234-1234-123456789abc",
+  "Actions": [
+    {
+      "Identifier": "12345678-1234-1234-1234-123456789abc",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "Text": "Hello, welcome to our service!"
+      },
+      "Transitions": {
+        "NextAction": "87654321-4321-4321-4321-cba987654321"
+      }
+    },
+    {
+      "Identifier": "87654321-4321-4321-4321-cba987654321",
+      "Type": "TransferToQueue",
+      "Parameters": {
+        "QueueId": "arn:aws:connect:us-east-1:123456789012:instance/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee/queue/qqqqqqqq-1111-2222-3333-444444444444",
+        "ContactFlowId": "arn:aws:connect:us-east-1:123456789012:instance/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee/contact-flow/ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj"
+      },
+      "Transitions": {
+        "NextAction": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+      }
+    },
+    {
+      "Identifier": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+      "Type": "UpdateContactAttributes",
+      "Parameters": {
+        "Attributes": {
+          "callback_number": "+12025551234"
+        }
+      }
+    }
+  ]
+}
