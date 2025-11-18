@@ -1,10 +1,8 @@
 # AWS Flow Corrector
 
-Convert static Amazon Connect contact flows to Terraform templates by replacing hardcoded ARNs with dynamic references.
+Converts hardcoded ARNs in Amazon Connect contact flows to Terraform template variables. This enables deploying multiple isolated environments (dev, staging, prod) or per-developer flow replicas without ARN conflicts.
 
-## What it does
-
-Converts hardcoded ARNs in your flow JSON to template variables, allowing you to use them with Terraform's `templatefile()` function.
+**Use case:** Deploy individual dev environments where each developer has their own isolated copy of flows (e.g., `dev_a_flow_4`, `dev_b_flow_4`) that reference their own resources, all managed through Terraform with a single template.
 
 **Before:**
 ```json
