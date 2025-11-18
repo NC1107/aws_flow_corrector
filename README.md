@@ -19,6 +19,24 @@ python3 main.py --input-dir example_flows --output-dir output_flows
 python3 main.py -i example_flow.json --dry-run -v
 ```
 
+## Options
+
+**Input/Output:**
+- `-i, --input-file` - Single input JSON file
+- `--input-dir` - Process all `.json` files in directory
+- `-o, --output-file` - Output file (default: `{input}.out.json`)
+- `--output-dir` - Output directory for batch processing
+
+**Behavior:**
+- `-d, --dry-run` - Preview without writing files
+- `-m, --update-metadata` - Update Metadata section (default: Actions only)
+- `-p, --print-keys` - Show ARN mappings and exit
+- `-v, --verbose` - Detailed output
+
+## Requirements
+
+Python 3.8+ (no external dependencies)
+
 ## What it does
 
 Converts hardcoded ARNs in your flow JSON to template variables, allowing you to use them with Terraform's `templatefile()` function.
@@ -53,20 +71,3 @@ resource "aws_connect_contact_flow" "my_flow" {
 }
 ```
 
-## Options
-
-**Input/Output:**
-- `-i, --input-file` - Single input JSON file
-- `--input-dir` - Process all `.json` files in directory
-- `-o, --output-file` - Output file (default: `{input}.out.json`)
-- `--output-dir` - Output directory for batch processing
-
-**Behavior:**
-- `-d, --dry-run` - Preview without writing files
-- `-m, --update-metadata` - Update Metadata section (default: Actions only)
-- `-p, --print-keys` - Show ARN mappings and exit
-- `-v, --verbose` - Detailed output
-
-## Requirements
-
-Python 3.8+ (no external dependencies)
