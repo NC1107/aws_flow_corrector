@@ -1,0 +1,52 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "8f409795-d5e5-4d68-99e0-720896b1393a",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 74.4,
+      "y": 20
+    },
+    "ActionMetadata": {
+      "8f409795-d5e5-4d68-99e0-720896b1393a": {
+        "position": {
+          "x": 288,
+          "y": 57.6
+        },
+        "parameters": {
+          "Messages": [
+            {
+              "PromptId": {}
+            }
+          ]
+        },
+        "audio": [
+          {
+            "id": "arn:aws:connect:us-west-2:299145661157:instance/c07e261b-3787-4bc8-b0d2-28481b1ecca0/prompt/653c940a-6619-4012-9769-c810cd54739a",
+            "type": "Prompt"
+          }
+        ]
+      }
+    },
+    "Annotations": [],
+    "name": "Default customer hold",
+    "description": "Default audio the customer hears while on hold.",
+    "type": "customerHold",
+    "status": "PUBLISHED",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "Messages": [
+          {
+            "PromptId": "arn:aws:connect:us-west-2:299145661157:instance/c07e261b-3787-4bc8-b0d2-28481b1ecca0/prompt/653c940a-6619-4012-9769-c810cd54739a"
+          }
+        ],
+        "ContinueMessagingDuringInterrupt": "false"
+      },
+      "Identifier": "8f409795-d5e5-4d68-99e0-720896b1393a",
+      "Type": "MessageParticipantIteratively",
+      "Transitions": {}
+    }
+  ]
+}

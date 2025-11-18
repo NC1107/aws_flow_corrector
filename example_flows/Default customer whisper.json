@@ -1,0 +1,54 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "8614b74d-3946-4bb3-9808-0e47df651838",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 74.4,
+      "y": 20
+    },
+    "ActionMetadata": {
+      "0da12357-da4c-4581-b21e-45b1ceee510d": {
+        "position": {
+          "x": 478.4,
+          "y": 180.8
+        }
+      },
+      "8614b74d-3946-4bb3-9808-0e47df651838": {
+        "position": {
+          "x": 238.4,
+          "y": 100
+        },
+        "parameters": {
+          "PromptId": {
+            "displayName": "Beep.wav"
+          }
+        },
+        "promptName": "Beep.wav"
+      }
+    },
+    "Annotations": [],
+    "name": "Default customer whisper",
+    "description": "Default whisper played to the customer",
+    "type": "customerWhisper",
+    "status": "PUBLISHED",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {},
+      "Identifier": "0da12357-da4c-4581-b21e-45b1ceee510d",
+      "Type": "EndFlowExecution",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "PromptId": "arn:aws:connect:us-west-2:299145661157:instance/c07e261b-3787-4bc8-b0d2-28481b1ecca0/prompt/7bcaafb8-8f23-4fc6-9e47-90b9fd5de337"
+      },
+      "Identifier": "8614b74d-3946-4bb3-9808-0e47df651838",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "0da12357-da4c-4581-b21e-45b1ceee510d"
+      }
+    }
+  ]
+}

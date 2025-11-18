@@ -1,0 +1,197 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "861b5e68-b2c5-4443-8035-7697f51144b0",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 53.6,
+      "y": 126.4
+    },
+    "ActionMetadata": {
+      "5babd3fa-99ac-4d97-803f-e2c971784263": {
+        "position": {
+          "x": 449.6,
+          "y": 296.8
+        }
+      },
+      "8a77edf6-047f-459d-870e-8705b4db8c45": {
+        "position": {
+          "x": 696.8,
+          "y": 228.8
+        }
+      },
+      "a09f52a9-fb12-4e33-a2c0-32e7ec838096": {
+        "position": {
+          "x": 1328,
+          "y": 410.4
+        }
+      },
+      "861b5e68-b2c5-4443-8035-7697f51144b0": {
+        "position": {
+          "x": 204.8,
+          "y": 126.4
+        }
+      },
+      "b6c455af-9ed1-440a-a83c-d27227d9627f": {
+        "position": {
+          "x": 1137.6,
+          "y": 232
+        }
+      },
+      "127a3beb-5492-433d-822d-5c5389a52a33": {
+        "position": {
+          "x": 917.6,
+          "y": 36.8
+        }
+      },
+      "aa2e49ed-9349-4240-9fcd-a9fee50e71a4": {
+        "position": {
+          "x": 466.4,
+          "y": 26.4
+        }
+      },
+      "9100e7fc-fa48-4354-ac06-a6e0a4ddaeb4": {
+        "position": {
+          "x": 692,
+          "y": 40
+        }
+      }
+    },
+    "Annotations": [],
+    "name": "Default queue transfer",
+    "description": "Default flow used to transfer to a queue.",
+    "type": "queueTransfer",
+    "status": "PUBLISHED",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "Text": "We are currently out of hours. Goodbye."
+      },
+      "Identifier": "5babd3fa-99ac-4d97-803f-e2c971784263",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "a09f52a9-fb12-4e33-a2c0-32e7ec838096"
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "There are currently no agents staffed. Goodbye."
+      },
+      "Identifier": "8a77edf6-047f-459d-870e-8705b4db8c45",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "a09f52a9-fb12-4e33-a2c0-32e7ec838096"
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "a09f52a9-fb12-4e33-a2c0-32e7ec838096",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {},
+      "Identifier": "861b5e68-b2c5-4443-8035-7697f51144b0",
+      "Type": "CheckHoursOfOperation",
+      "Transitions": {
+        "NextAction": "b6c455af-9ed1-440a-a83c-d27227d9627f",
+        "Conditions": [
+          {
+            "NextAction": "aa2e49ed-9349-4240-9fcd-a9fee50e71a4",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "True"
+              ]
+            }
+          },
+          {
+            "NextAction": "5babd3fa-99ac-4d97-803f-e2c971784263",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "False"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "b6c455af-9ed1-440a-a83c-d27227d9627f",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "Failed to transfer to queue. Goodbye."
+      },
+      "Identifier": "b6c455af-9ed1-440a-a83c-d27227d9627f",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "a09f52a9-fb12-4e33-a2c0-32e7ec838096"
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "127a3beb-5492-433d-822d-5c5389a52a33",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "b6c455af-9ed1-440a-a83c-d27227d9627f",
+        "Errors": [
+          {
+            "NextAction": "b6c455af-9ed1-440a-a83c-d27227d9627f",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "b6c455af-9ed1-440a-a83c-d27227d9627f",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "MetricType": "NumberOfAgentsStaffed"
+      },
+      "Identifier": "aa2e49ed-9349-4240-9fcd-a9fee50e71a4",
+      "Type": "CheckMetricData",
+      "Transitions": {
+        "NextAction": "b6c455af-9ed1-440a-a83c-d27227d9627f",
+        "Conditions": [
+          {
+            "NextAction": "9100e7fc-fa48-4354-ac06-a6e0a4ddaeb4",
+            "Condition": {
+              "Operator": "NumberGreaterThan",
+              "Operands": [
+                "0"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "8a77edf6-047f-459d-870e-8705b4db8c45",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "b6c455af-9ed1-440a-a83c-d27227d9627f",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "Now transferring."
+      },
+      "Identifier": "9100e7fc-fa48-4354-ac06-a6e0a4ddaeb4",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "127a3beb-5492-433d-822d-5c5389a52a33"
+      }
+    }
+  ]
+}

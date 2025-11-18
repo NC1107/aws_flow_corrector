@@ -1,0 +1,56 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "098007b7-e257-4b7c-9c3c-741d4680517d",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 242.4,
+      "y": 172
+    },
+    "ActionMetadata": {
+      "098007b7-e257-4b7c-9c3c-741d4680517d": {
+        "position": {
+          "x": 432.8,
+          "y": 236
+        },
+        "parameters": {
+          "Messages": [
+            null,
+            {
+              "PromptId": {}
+            }
+          ]
+        },
+        "audio": [
+          {
+            "id": "arn:aws:connect:us-west-2:299145661157:instance/c07e261b-3787-4bc8-b0d2-28481b1ecca0/prompt/0cadae01-0def-4257-98b0-42bebb28950b",
+            "type": "Prompt"
+          }
+        ]
+      }
+    },
+    "Annotations": [],
+    "name": "Default customer queue",
+    "description": "Default audio played when a customer is waiting in queue.",
+    "type": "customerQueue",
+    "status": "PUBLISHED",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "Messages": [
+          {
+            "Text": "Thank you for calling. Your call is very important to us and will be answered in the order it was received."
+          },
+          {
+            "PromptId": "arn:aws:connect:us-west-2:299145661157:instance/c07e261b-3787-4bc8-b0d2-28481b1ecca0/prompt/0cadae01-0def-4257-98b0-42bebb28950b"
+          }
+        ],
+        "ContinueMessagingDuringInterrupt": "false"
+      },
+      "Identifier": "098007b7-e257-4b7c-9c3c-741d4680517d",
+      "Type": "MessageParticipantIteratively",
+      "Transitions": {}
+    }
+  ]
+}
