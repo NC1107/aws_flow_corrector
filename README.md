@@ -4,18 +4,19 @@ Convert static Amazon Connect contact flows to Terraform templates by replacing 
 
 ## Usage
 
+**Single file:**
 ```bash
-# Basic conversion
 python3 main.py -i example_flow.json
+```
 
-# Dry run (preview changes)
-python3 main.py -i example_flow.json --dry-run
+**Batch process directory:**
+```bash
+python3 main.py --input-dir example_flows --output-dir output_flows
+```
 
-# Also update Metadata section
-python3 main.py -i example_flow.json --update-metadata
-
-# Custom output file
-python3 main.py -i example_flow.json -o output.json
+**Preview changes:**
+```bash
+python3 main.py -i example_flow.json --dry-run -v
 ```
 
 ## What it does
@@ -27,22 +28,23 @@ arn:aws:lambda:us-east-1:123456789:function:state-lookup
 
 To dynamic references:
 ```
-${lambda.state_lookup}
+${function.state_lookup}
 ```
 
 ## Options
 
-- `-i, --input-file` - Input contact flow JSON file (required)
-- `-o, --output-file` - Output file name (default: input with `.out.json` suffix)
-- `-d, --dry-run` - Preview changes without writing files
-- `-m, --update-metadata` - Also update ARNs in Metadata section (default: Actions only)
-- `-p, --print-keys` - Print all ARNs and their dynamic reference keys
+**Input/Output:**
+- `-i, --input-file` - Single input JSON file
+- `--input-dir` - Process all `.json` files in directory
+- `-o, --output-file` - Output file (default: `{input}.out.json`)
+- `--output-dir` - Output directory for batch processing
+
+**Behavior:**
+- `-d, --dry-run` - Preview without writing files
+- `-m, --update-metadata` - Update Metadata section (default: Actions only)
+- `-p, --print-keys` - Show ARN mappings and exit
 - `-v, --verbose` - Detailed output
 
 ## Requirements
 
 Python 3.8+ (no external dependencies)
-
-## License
-
-MIT
