@@ -1,5 +1,11 @@
 # AWS Flow Corrector
 
+<!-- social-badges:start -->
+[![Discord](https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white)](https://discord.gg/jUMuSxGf6q)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/NC1107)
+[![Patreon](https://img.shields.io/badge/Patreon-F96854?logo=patreon&logoColor=white)](https://patreon.com/NPC1107)
+<!-- social-badges:end -->
+
 Converts hardcoded ARNs in Amazon Connect contact flows to Terraform template variables. This enables deploying multiple isolated environments (dev, staging, prod) or per-developer flow replicas without ARN conflicts.
 
 **Use case:** Deploy individual dev environments where each developer has their own isolated copy of flows (e.g., `dev_a_flow_4`, `dev_b_flow_4`) that reference their own resources, all managed through Terraform with a single template.
